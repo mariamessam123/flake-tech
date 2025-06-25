@@ -20,6 +20,7 @@ This Python script automates the creation of Trello boards based on specific dea
 
 - Python 3
 - `requests` library
+- `time` library
 - Trello REST API
 - Zoho CRM v2 REST API
 
@@ -30,14 +31,15 @@ This Python script automates the creation of Trello boards based on specific dea
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/zoho-trello-integration.git
-cd zoho-trello-integration
+git clone https://github.com/mariamessam123/flake-tech.git
+
 ```
 
 ### 2. Install Required Packages
 
 ```bash
 pip install requests
+pip install time
 ```
 
 ### 3. Set Your Credentials
@@ -53,7 +55,7 @@ TRELLO_API_TOKEN = "your_trello_api_token"
 Ensure the Zoho CRM **Deals** module includes a custom text field with this exact API name:
 
 ```
-Project_Board_ID__c
+Project_Board_ID_c
 ```
 
 This field will store the Trello board ID.
@@ -66,7 +68,7 @@ This field will store the Trello board ID.
 
 - **Stage**: `Project Kickoff`
 - **Type**: `New Implementation Project`
-- **Project_Board_ID__c**: *(leave it blank)*
+- **Project_Board_ID_c**: *(leave it blank)*
 
 ### 2. Run the Script
 
@@ -81,24 +83,13 @@ If a matching deal is found, it will:
 ✅ Add 3 cards (tasks)  
 ✅ Update the Zoho deal with the Trello board ID
 
----
-
-## 🛠 Optional: Run Periodically
-
-You can modify the script to run every 5 minutes:
-
-```python
-while True:
-    run_sync()
-    time.sleep(300)
-```
 
 ---
 
 ## ❗ Notes
 
 - The Zoho access token expires after 1 hour. You can implement token refreshing if needed.
-- Make sure the custom field `Project_Board_ID__c` is **writeable** and not restricted by any workflow or validation rule.
+- Make sure the custom field `Project_Board_ID_c` is **writeable** and not restricted by any workflow or validation rule.
 - Use Postman or Python to test updates individually if needed.
 
 ---
